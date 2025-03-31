@@ -23,6 +23,8 @@ button[variant="primary"] {
   @apply outline-none ring-primary focus:ring-2 ring-offset-2;
 }
 
-input {
-  @apply border border-border rounded-md px-3 py-2 box-border;
+input[type="text"],
+input[type="number"],
+select {
+  @apply border border-border rounded-md px-3 py-2 box-border appearance-none;
 }
