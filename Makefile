@@ -1,8 +1,13 @@
 install:
 	composer install
+	bun install
 
 run:
 	docker-compose up -d
+
+publish:
+	git push
+	ssh ssh.stejs.cz 'bash -s' < publish.sh
 
 build:
 	bun build ./src/*.ts --outdir=www/js --public-path="/js" --minify --splitting 

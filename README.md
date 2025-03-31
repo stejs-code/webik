@@ -1,6 +1,8 @@
 # Informatika PHP
 
+- produkce jede na [webik.stejs.cz](https://webik.stejs.cz)
 - vyžadován docker :)
+- vyžadován composer na instalaci (zatím není nepotřeba)
 
 ## Instalace
 
@@ -28,4 +30,10 @@ make dev
 
 ```bash
 make build
+```
+
+# Push na produkci
+
+```
+make publish
 ```
