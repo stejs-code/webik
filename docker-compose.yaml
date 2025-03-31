@@ -1,0 +1,32 @@
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./vendor:/var/www/vendor
+      - ./composer.lock:/var/www/html/composer.lock
+      - ./composer.json:/var/www/html/composer.json
+      - ./App:/var/www/App
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - fpm
+    networks:
+      - internal
+
+  fpm:
+    image: php:8.2-fpm
+    working_dir: /var/www/html
+    volumes:
+      - ./www:/var/www/html
+      - ./vendor:/var/www/vendor
+      - ./composer.lock:/var/www/composer.lock
+      - ./composer.json:/var/www/composer.json
+      - ./App:/var/www/App
+    networks:
+      - internal
+
+networks:
+  internal:
+    name: internal
