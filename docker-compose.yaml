@@ -18,6 +18,9 @@ services:
   fpm:
     image: php:8.2-fpm
     working_dir: /var/www/html
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
     volumes:
       - ./www:/var/www/html
       - ./vendor:/var/www/vendor
