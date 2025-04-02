@@ -1,5 +1,5 @@
 import { createIcons, icons } from "lucide";
 
-console.log("Hello World");
+console.log("Hello Worldsßßßßßßß");
 
 createIcons({ icons });

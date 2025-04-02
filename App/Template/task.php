@@ -6,7 +6,7 @@
         <a class="block p-4 border border-border rounded-sm hover:shadow-md transition-all "
             href="/task/<?= $task['url'] ?>">
             <h2 class="text-lg font-bold"><?= $task['name'] ?></h2>
-            <p class="text-sm text-gray-500"><?= $task['description'] ?></p>
+            <p class="text-sm font-bold"><?= $task['description'] ?></p>
         </a>
 
     <? } ?>

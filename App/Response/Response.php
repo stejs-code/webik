@@ -13,7 +13,12 @@ class Response
     private string $content_type;
     private array $headers = [];
 
-
+    public function __construct()
+    {
+        $this->status = 200;
+        $this->content_type = 'text/html';
+        $this->body = '';
+    }
 
     public function json(array $data): Response
     {
