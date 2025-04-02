@@ -9,6 +9,7 @@ class TemplateContext
     public string $title = "";
     public string $head;
     public Url $url;
+    public bool $container = true;
     public string $titleSuffix = "";
     public DependencyContainer $dc;
 

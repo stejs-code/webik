@@ -3,10 +3,12 @@
 namespace App;
 
 use Psr\Http\Message\ServerRequestInterface;
+use App\Response\Response;
 
 class BaseController
 {
     private ServerRequestInterface $request;
+    protected Response $response;
     public bool $layout = true;
     public array $menuItems = [];
     public TemplateContext $tpl_context;
@@ -14,6 +16,7 @@ class BaseController
 
     public function __construct(public DependencyContainer $dc)
     {
+        $this->response = new Response();
         $this->tpl_context = new TemplateContext($dc);
         $this->tpl_context->setTitleSuffix(" | Webík");
     }
@@ -23,7 +26,12 @@ class BaseController
         $this->request = $request;
         $this->task();
 
-        echo $this->render();
+
+        $html = $this->render();
+
+        $this->response->status(200)->html($html)->send();
+
+
 
     }
 

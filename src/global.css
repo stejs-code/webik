@@ -2,29 +2,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: var(--color-fuchsia-500);
+  --color-primary: var(--color-orange-500);
   --color-secondary: #fff;
   --color-border: var(--color-slate-300);
 }
 
-h1 {
-  @apply text-4xl font-bold mb-8 mt-6;
-}
+@layer base {
+  h1 {
+    @apply text-4xl font-bold mb-8 mt-6;
+  }
 
-h2 {
-  @apply text-xl font-bold;
-}
+  h2 {
+    @apply text-xl font-bold;
+  }
 
-button[variant="primary"] {
-  @apply bg-primary text-white px-4 py-2 rounded-md;
-}
+  button[variant="primary"],
+  a[variant="primary"] {
+    @apply bg-primary text-white px-4 py-2 rounded-md inline-block;
+  }
 
-*:not(a):focus {
-  @apply outline-none ring-primary focus:ring-2 ring-offset-2;
-}
+  *:not(a):focus {
+    @apply outline-none ring-primary focus:ring-2 ring-offset-2;
+  }
 
-input[type="text"],
-input[type="number"],
-select {
-  @apply border border-border rounded-md px-3 py-2 box-border appearance-none;
+  input[type="text"],
+  input[type="number"],
+  select {
+    @apply border border-border rounded-md px-3 py-2 box-border appearance-none;
+  }
 }

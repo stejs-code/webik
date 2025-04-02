@@ -18,10 +18,14 @@ class HomePage extends BaseController
         $this->tpl = new Template("homepage", $this->tpl_context);
     }
 
-    public function tasks()
+    protected function task()
     {
-        $this->tpl_context->setTitle("Úkoly");
-        $this->tpl = new Template("homepage", $this->tpl_context);
+        $tasksComponent = new Task($this->dc);
+        $tasksComponent->layout = false;
+        $tasksComponent->tasksComponent();
+
+
+        $this->tpl->assign("tasksComponent", $tasksComponent->render());
     }
 
 
