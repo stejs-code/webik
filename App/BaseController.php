@@ -5,7 +5,7 @@ namespace App;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Response\Response;
 
-class BaseController
+class BaseController extends Bone
 {
     private ServerRequestInterface $request;
     protected Response $response;
@@ -14,17 +14,18 @@ class BaseController
     public TemplateContext $tpl_context;
     protected Template $tpl;
 
-    public function __construct(public DependencyContainer $dc)
+    public function __construct()
     {
+        parent::__construct();
         $this->response = new Response();
-        $this->tpl_context = new TemplateContext($dc);
+        $this->tpl_context = new TemplateContext();
         $this->tpl_context->setTitleSuffix(" | Webík");
     }
 
     public function handle(ServerRequestInterface $request)
     {
         $this->request = $request;
-        $this->task();
+        $this->compute();
 
 
         $html = $this->render();
@@ -35,7 +36,7 @@ class BaseController
 
     }
 
-    protected function task()
+    protected function compute()
     {
 
     }

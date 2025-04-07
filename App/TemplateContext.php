@@ -4,19 +4,13 @@ namespace App;
 
 use http\Url;
 
-class TemplateContext
+class TemplateContext extends Bone
 {
     public string $title = "";
     public string $head;
-    public Url $url;
     public bool $container = true;
     public string $titleSuffix = "";
     public DependencyContainer $dc;
-
-    public function __construct(DependencyContainer $dc)
-    {
-        $this->dc = $dc;
-    }
 
     public function setTitleSuffix(string $suffix): TemplateContext
     {
@@ -24,9 +18,9 @@ class TemplateContext
         return $this;
     }
 
-    public function setTitle(string $title): TemplateContext
+    public function setTitle(string $title, bool $suffix = true): TemplateContext
     {
-        $this->title = "$title{$this->titleSuffix}";
+        $this->title = $title . ($suffix ? $this->titleSuffix : "");
         return $this;
     }
 

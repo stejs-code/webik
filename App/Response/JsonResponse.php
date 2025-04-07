@@ -10,7 +10,5 @@ class JsonResponse extends Response
     {
         parent::__construct();
         $this->json($data);
-
     }
-
 }

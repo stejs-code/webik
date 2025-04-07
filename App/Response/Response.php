@@ -4,8 +4,6 @@ namespace App\Response;
 
 
 
-use JetBrains\PhpStorm\NoReturn;
-
 class Response
 {
     private string $body;
@@ -51,7 +49,7 @@ class Response
         return $this;
     }
 
-    #[NoReturn] public function send(): void
+    public function send(): void
     {
         http_response_code($this->status);
 

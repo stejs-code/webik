@@ -1,5 +1,7 @@
 <?php
 
+use App\Component\TasksGrid;
+
 $context->container = false;
 
 ?>
@@ -20,8 +22,8 @@ $context->container = false;
     <div class="bg-white">
         <div class="max-w-screen-lg mx-auto px-4 py-12">
 
+            <? (new TasksGrid())->render(); ?>
 
-            <?= $tasksComponent ?>
         </div>
     </div>
 </main>

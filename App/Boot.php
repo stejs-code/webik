@@ -2,9 +2,6 @@
 
 namespace App;
 
-use GuzzleHttp\Psr7\ServerRequest;
-use JetBrains\PhpStorm\NoReturn;
-
 
 class Boot
 {
@@ -12,6 +9,7 @@ class Boot
 
     public function __construct()
     {
+        Bone::setGlobalDC(new DependencyContainer());
         $this->router = new Router();
         $this->router->registerRoutes();
     }
@@ -19,10 +17,7 @@ class Boot
 
     public function run(): void
     {
-
-        $request = ServerRequest::fromGlobals();
-
-        $this->router->dispatch($request, new DependencyContainer());
+        $this->router->dispatch();
     }
 
 }

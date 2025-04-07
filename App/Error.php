@@ -2,18 +2,18 @@
 
 namespace App;
 
-class Error
+class Error extends Bone
 {
     public TemplateContext $tpl_context;
     public Template $tpl;
 
-    public function __construct(public DependencyContainer $dc, public string $message, public int $code = 500)
+    public function __construct(public string $message, public int $code = 500)
     {
     }
 
     public function render()
     {
-        $this->tpl_context = new TemplateContext($this->dc);
+        $this->tpl_context = new TemplateContext();
 
         http_response_code($this->code);
 
@@ -28,7 +28,6 @@ class Error
         echo (new Template("@layout", $this->tpl_context))
             ->assign("children", $html)
             ->assign("menuItems", [])
-
             ->render();
     }
 }

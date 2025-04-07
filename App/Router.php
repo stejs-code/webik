@@ -5,17 +5,11 @@ namespace App;
 use App\Module\HomePage;
 use App\Module\Task;
 use App\Response\Response;
-use JetBrains\PhpStorm\NoReturn;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
-class Router
+
+class Router extends Bone
 {
     public array $routes = [];
-
-    public function __construct()
-    {
-    }
 
     /**
      * @param $method string GET, POST, PUT, DELETE
@@ -105,30 +99,30 @@ class Router
         $this->get('/task/:urlPath', Task::class);
     }
 
-    public function dispatch(ServerRequestInterface $request, DependencyContainer $dc): void
+    public function dispatch(): void
     {
-        $path = $request->getUri()->getPath();
-        $route = $this->getRoute($request->getMethod(), $path);
+        $path = $this->dc->request->getUri()->getPath();
+        $route = $this->getRoute($this->dc->request->getMethod(), $path);
         $controllerClassName = $route['controller'] ?? null;
         $params = $route['params'] ?? [];
 
         foreach ($params as $key => $value) {
-            $dc->parameters->$key = $value;
+            $this->dc->parameters->$key = $value;
         }
 
         if ($controllerClassName) {
-            $controller = new $controllerClassName($dc);
+            $controller = new $controllerClassName($this->dc);
 
             if ($controller instanceof BaseController) {
-                $controller->handle($request);
+                $controller->handle($this->dc->request);
             } else {
                 (new Response())
                     ->status(500)
-                    ->html('Unknown controller')
+                    ->html("Unknown controller")
                     ->send();
             }
         } else {
-            (new Error($dc, "Stránka nenalezena", 404))->render();
+            (new Error("Stránka nenalezena", 404))->render();
         }
     }
 }

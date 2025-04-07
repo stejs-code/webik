@@ -3,6 +3,6 @@
     neexistovala.</p>
 
 
-<a href="/task" class="inline-block mt-4 bg-blue-600 transition-all hover:bg-blue-700 text-white py-2 px-4 rounded">
+<a href="/" onclick="event.preventDefault(); history.back();" class="mt-4" variant="primary">
     Zpět
 </a>

@@ -4,46 +4,44 @@ namespace App\Module;
 
 
 use App\BaseController;
-use App\DependencyContainer;
 use App\Template;
-use function App\dumpe;
 
 class Task extends BaseController
 {
 
-    public array $tasks = [
+    public static array $tasks = [
         [
             "id" => 1,
             "name" => "Úkol 1",
-            "url" => "ukol-1",
+            "url" => "/task/ukol-1",
             "description" => "Základní základ všech základů",
             "status" => "done",
         ],
         [
             "id" => 2,
             "name" => "Úkol 2",
-            "url" => "ukol-2",
+            "url" => "/task/ukol-2",
             "description" => "Počasí? Červenec? Horko? Hrozné horko? A spoustu čísel?",
             "status" => "done",
         ],
         [
             "id" => 3,
             "name" => "Skvělý formulář",
-            "url" => "skvely-formular",
+            "url" => "/task/skvely-formular",
             "description" => "Výpočet obsahu a obvodu kruhu a změna barvy pozadí?",
             "status" => "done",
         ],
         [
             "id" => 4,
             "name" => "Barva pozadí",
-            "url" => "barva-pozadi",
+            "url" => "/task/barva-pozadi",
             "description" => "Nastavení barvy pozadí, protože proč&nbsp;ne.",
             "status" => "done",
         ],
         [
             "id" => 5,
             "name" => "Kruh a čtverec",
-            "url" => "kruh-a-ctverec",
+            "url" => "/task/kruh-a-ctverec",
             "description" => "Kruh a čtverec, vykreslit? Stáhout?",
             "status" => "done",
         ],
@@ -51,13 +49,11 @@ class Task extends BaseController
 
     public array $task = [];
 
-    public function __construct(DependencyContainer $dc)
+    public function compute()
     {
-        parent::__construct($dc);
-
-        if (isset($dc->parameters->urlPath) && $dc->parameters->urlPath) {
-            $this->task = array_filter($this->tasks, function ($task) use ($dc) {
-                return $task['url'] == $dc->parameters->urlPath;
+        if (isset($this->dc->parameters->urlPath)) {
+            $this->task = array_filter(Task::$tasks, function ($task) {
+                return $task['url'] == $this->dc->request->getUri()->getPath();
             });
 
             if (count($this->task) == 0) {
@@ -69,8 +65,6 @@ class Task extends BaseController
                 $this->tpl = (new Template("task/" . ($this->task["id"]), $this->tpl_context));
 
             }
-
-
         } else {
             $this->tpl = (new Template("task", $this->tpl_context));
         }
@@ -81,9 +75,8 @@ class Task extends BaseController
             $this->tpl_context->setTitle("Úkoly");
         }
 
-        $this->tpl->assign("tasks", $this->tasks);
+        $this->tpl->assign("tasks", self::$tasks);
         $this->tpl->assign("task", $this->task);
-
     }
 
     public function render(): string
@@ -97,35 +90,24 @@ class Task extends BaseController
         return parent::render();
     }
 
-    public function tasksComponent()
-    {
-        $this->tpl = (new Template("task", $this->tpl_context));
-        $this->tpl->assign("tasks", $this->tasks);
-    }
-
 
     /**
      * Vykreslí SVG obrázek kruhu nebo čtverce
      * 
      * @param string|null $tvar Typ tvaru ('kruh' pro kruh, cokoliv jiného pro čtverec)
      * @param int|null $velikost Velikost (poloměr pro kruh, polovina úhlopříčky pro čtverec)
-     * @param string|null $barva Barva tvaru
-     * @param string|null $vlastni_barva Vlastní barva (přepíše $barva, pokud je zadána)
+     * @param string|null $barva Barva tvaru (hex)
      * @return string SVG obsah jako řetězec
      */
-    static function renderSvg(
+    public static function renderSvg(
         ?string $tvar = null,
         ?int $velikost = null,
-        ?string $barva = null,
-        ?string $vlastni_barva = null
+        ?string $barva = null
     ) {
-        $tvar = $tvar ?? $_GET["tvar"] ?? "kruh";
-        $velikost = $velikost ?? $_GET["velikost"] ?? 100;
-        $barva = $barva ?? $_GET["barva"] ?? "#000000";
+        $tvar ??= $_GET["tvar"] ?? "kruh";
+        $velikost ??= $_GET["velikost"] ?? 100;
+        $barva ??= $_GET["barva"] ?? "#000000";
 
-        if (!empty($vlastni_barva ?? $_GET["vlastni_barva"] ?? "")) {
-            $barva = $vlastni_barva ?? $_GET["vlastni_barva"];
-        }
 
         $svg_content = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>';
         $svg_content .= '<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">';
