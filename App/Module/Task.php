@@ -115,9 +115,11 @@ class Task extends BaseController
         $velikost ??= $_GET["velikost"] ?? 100;
         $barva ??= $_GET["barva"] ?? "#000000";
 
+        $strana = round($velikost * sqrt(2));
 
+        $sirka = $tvar == "kruh" ? $velikost * 2 : $strana;
         $svg_content = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>';
-        $svg_content .= '<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">';
+        $svg_content .= '<svg width="' . $sirka . '" height="' . $sirka . '" xmlns="http://www.w3.org/2000/svg">';
 
         if ($tvar == "kruh") {
             $svg_content .= sprintf(
@@ -128,7 +130,6 @@ class Task extends BaseController
                 $barva
             );
         } elseif ($tvar == "ctverec") {
-            $strana = round($velikost * sqrt(2));
             $x = 200 - $strana / 2;
             $y = 200 - $strana / 2;
             $svg_content .= sprintf(
