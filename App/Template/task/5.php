@@ -1,22 +1,25 @@
 <?php
 
 use App\Module\Task;
+
+$tvar ??= $_GET["tvar"] ?? "kruh";
+$velikost ??= $_GET["velikost"] ?? 100;
+$barva ??= $_GET["barva"] ?? "#000000";
 ?>
 <h1>Nakresli čtverec nebo kruh</h1>
 
 <form method="get">
     <p>Výběr obrazce:</p>
-    <input type="radio" name="tvar" value="kruh" <?php echo isset($_GET['tvar']) && $_GET['tvar'] === 'kruh' || !isset($_GET['tvar']) ? 'checked' : ''; ?>> kruh
-    <input type="radio" name="tvar" value="ctverec" <?php echo isset($_GET['tvar']) && $_GET['tvar'] === 'ctverec' ? 'checked' : ''; ?>> čtverec
+    <input type="radio" name="tvar" value="kruh" <?php echo $tvar === 'kruh' ? 'checked' : ''; ?>> kruh
+    <input type="radio" name="tvar" value="ctverec" <?php echo $tvar === 'ctverec' ? 'checked' : ''; ?>> čtverec
     <br><br>
 
     <label>Poloměr kruhu / polovina úhlopříčky čtverce:</label>
-    <input type="number" name="velikost" value="100" required>
+    <input type="number" name="velikost" value="<?php echo $velikost; ?>" required>
     <br><br>
 
     <label>Barva obrazce:</label>
-    <input type="color" name="barva"
-        value="<?php echo isset($_GET['barva']) ? htmlspecialchars($_GET['barva']) : '#000000'; ?>">
+    <input type="color" name="barva" value="<?php echo $barva; ?>">
     <br><br>
 
     <button type="submit" variant="primary" class="mb-4">Vykresli!</button>
