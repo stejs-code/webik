@@ -124,8 +124,8 @@ class Task extends BaseController
         if ($tvar == "kruh") {
             $svg_content .= sprintf(
                 '<circle cx="%d" cy="%d" r="%d" fill="%s" />',
-                200,
-                200,
+                $velikost,
+                $velikost,
                 $velikost,
                 $barva
             );
