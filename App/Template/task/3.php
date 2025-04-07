@@ -18,7 +18,7 @@ $circumference = round(2 * $radius * pi(), 2);
     </div>
 <? } ?>
 
-<form action="/task/<?= $task['url'] ?>" method="get">
+<form action="<?= $task['url'] ?>" method="get">
 
     <input type="text" name="radius" value="<?= $radius ?>" placeholder="Poloměr kruhu" class="mr-2">
     <button variant="primary" type="submit">Vypočítat</button>
