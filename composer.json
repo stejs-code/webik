@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "guzzlehttp/psr7": "^2.7"
+    "guzzlehttp/psr7": "^2.7",
+    "dallgoot/yaml": "^1.0"
   },
   "config": {
     "allow-plugins": {

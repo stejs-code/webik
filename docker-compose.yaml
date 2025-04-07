@@ -9,6 +9,7 @@ services:
       - ./composer.lock:/var/www/html/composer.lock
       - ./composer.json:/var/www/html/composer.json
       - ./App:/var/www/App
+      - ./app.yaml:/var/www/app.yaml
       - ./default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - fpm
@@ -27,6 +28,7 @@ services:
       - ./composer.lock:/var/www/composer.lock
       - ./composer.json:/var/www/composer.json
       - ./App:/var/www/App
+      - ./app.yaml:/var/www/app.yaml
     networks:
       - internal
 

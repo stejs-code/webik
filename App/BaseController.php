@@ -55,6 +55,7 @@ class BaseController extends Bone
 
         if ($this->layout) {
             return (new Template("@layout", $this->tpl_context))
+                ->assign("config", $this->dc->config)
                 ->assign("children", $rendered)
                 ->render();
         }

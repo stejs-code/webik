@@ -2,6 +2,8 @@
 
 use App\Component\Navigation;
 
+$buildTime = $config->isDev ? (microtime(true) * 10000) : $config->buildTime;
+
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -9,7 +11,8 @@ use App\Component\Navigation;
 <head>
     <meta charset="UTF-8">
     <title><?= $context->title ?></title>
-    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/global.css?buildTime=<?= $buildTime ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -32,7 +35,7 @@ use App\Component\Navigation;
 
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script type="module" src="/js/main.js?buildTime=<?= $buildTime ?>" defer></script>
 </body>
 
 </html>
