@@ -6,8 +6,8 @@ use App\Module\Task;
 
 <form method="get">
     <p>Výběr obrazce:</p>
-    <input type="radio" name="tvar" value="kruh" checked> kruh
-    <input type="radio" name="tvar" value="ctverec"> čtverec
+    <input type="radio" name="tvar" value="kruh" <?php echo isset($_GET['tvar']) && $_GET['tvar'] === 'kruh' || !isset($_GET['tvar']) ? 'checked' : ''; ?>> kruh
+    <input type="radio" name="tvar" value="ctverec" <?php echo isset($_GET['tvar']) && $_GET['tvar'] === 'ctverec' ? 'checked' : ''; ?>> čtverec
     <br><br>
 
     <label>Poloměr kruhu / polovina úhlopříčky čtverce:</label>
