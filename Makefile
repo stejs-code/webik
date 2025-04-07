@@ -12,6 +12,7 @@ publish:
 build:
 	bun build ./src/*.ts --outdir=www/js --public-path="/js" --minify
 	bunx @tailwindcss/cli -i ./src/global.css -o ./www/css/global.css --minify
+	bun run setBuildTime.ts
 
 dev.js:
 	bun build --watch ./src/*.ts --outdir=www/js --public-path="/js" --sourcemap=inline
