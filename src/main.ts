@@ -1,5 +1,10 @@
-import { createIcons, icons } from "lucide";
+import { createIcons, TentTree } from "lucide";
+import { mountPrefetcher } from "./prefetcher";
 
-console.log("Hello Worldsßßßßßßß");
+createIcons({
+  icons: {
+    TentTree,
+  },
+});
 
-createIcons({ icons });
+mountPrefetcher();

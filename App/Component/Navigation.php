@@ -23,7 +23,7 @@ class Navigation extends Component
 
         <div class="bg-white border-b border-border tm-mavigation">
             <nav class="flex justify-between items-center mx-auto max-w-screen-lg px-4 py-2">
-                <a href="/" class="font-bold text-lg">
+                <a spa="prefetch" href="/" class="font-bold text-lg">
                     Webík
                 </a>
 
@@ -43,7 +43,7 @@ class Navigation extends Component
         ?>
 
         <li>
-            <a href="<?= $item['url'] ?>" <?= $item['active'] ? 'data-active' : '' ?>
+            <a spa="prefetch" href="<?= $item['url'] ?>" <?= $item['active'] ? 'data-active' : '' ?>
                 class="relative block py-2 before:content-[''] before:absolute before:bottom-1 before:left-0 before:transition-all before:right-[100%] hover:before:right-0 data-active:before:right-0 before:h-[2px] before:bg-primary">
                 <?= $item['name'] ?>
             </a>

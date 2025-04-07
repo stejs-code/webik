@@ -28,11 +28,18 @@ class BaseController extends Bone
         $this->compute();
 
 
+        // TODO: finish this
+        if (isset($this->request->getQueryParams()["replace_route"])) {
+            $this->layout = false;
+
+            $response = $this->render();
+            $this->tpl_context;
+            $this->response->status(200)->html($response)->send();
+        }
+
         $html = $this->render();
 
         $this->response->status(200)->html($html)->send();
-
-
 
     }
 
@@ -44,11 +51,11 @@ class BaseController extends Bone
     protected function render(): string
     {
         $rendered = $this->tpl->render();
+        $rendered = "<!--- ROUTE_REF_START --!>" . $rendered . "<!--- ROUTE_REF_END --!>";
 
         if ($this->layout) {
             return (new Template("@layout", $this->tpl_context))
                 ->assign("children", $rendered)
-
                 ->render();
         }
 

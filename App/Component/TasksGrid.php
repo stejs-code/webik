@@ -19,7 +19,8 @@ class TasksGrid extends Component
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[1fr]">
             <?php foreach ($this->tasks as $task) { ?>
-                <a href="<?= $task['url'] ?>" class="block p-4 border border-border rounded-sm hover:shadow-md transition-all">
+                <a spa="prefetch" href="<?= $task['url'] ?>"
+                    class="block p-4 border border-border rounded-sm hover:shadow-md transition-all">
                     <div class="">
                         <h3 class="text-lg font-bold"><?= $task['name'] ?></h3>
                         <p class="text-gray-600"><?= $task['description'] ?></p>
