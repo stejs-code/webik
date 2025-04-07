@@ -3,6 +3,6 @@
     neexistovala.</p>
 
 
-<a href="/" onclick="event.preventDefault(); history.back();" class="mt-4" variant="primary">
+<a spa="prefetch" href="/" onclick="event.preventDefault(); history.back();" class="mt-4" variant="primary">
     Zpět
 </a>

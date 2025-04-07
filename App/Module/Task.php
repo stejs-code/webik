@@ -45,6 +45,13 @@ class Task extends BaseController
             "description" => "Kruh a čtverec, vykreslit? Stáhout?",
             "status" => "done",
         ],
+        [
+            "id" => 6,
+            "name" => "Jídelna",
+            "url" => "/canteen",
+            "description" => "Objednej si jídlo",
+            "status" => "done",
+        ],
     ];
 
     public array $task = [];

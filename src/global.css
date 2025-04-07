@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: var(--color-orange-500);
+  --color-primary: var(--color-blue-500);
   --color-secondary: #fff;
   --color-border: var(--color-slate-300);
 }
@@ -13,7 +13,7 @@
   }
 
   h2 {
-    @apply text-xl font-bold;
+    @apply text-2xl font-bold;
   }
 
   button[variant="primary"],

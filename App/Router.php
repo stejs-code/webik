@@ -4,6 +4,7 @@ namespace App;
 
 use App\Module\HomePage;
 use App\Module\Task;
+use App\Module\Canteen;
 use App\Response\Response;
 
 
@@ -97,6 +98,7 @@ class Router extends Bone
         $this->get('/', HomePage::class);
         $this->get('/task', Task::class);
         $this->get('/task/:urlPath', Task::class);
+        $this->get('/canteen', Canteen::class);
     }
 
     public function dispatch(): void
