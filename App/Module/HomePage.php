@@ -15,5 +15,4 @@ class HomePage extends BaseController
 
         $this->tpl = new Template("homepage", $this->tpl_context);
     }
-
 }

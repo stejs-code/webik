@@ -53,5 +53,4 @@ class TemplateContext extends Bone
         $this->head .= '<script src="' . $src . '" type="' . $type . '"></script>';
         return $this;
     }
-
 }

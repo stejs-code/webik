@@ -13,20 +13,17 @@ class Component extends Bone
         $this->compute();
     }
 
-    public function compute()
-    {
-
-    }
+    public function compute() {}
 
     public function render()
     {
-        ?>
+?>
 
         <div class="bg-white border-b border-border tm-mavigation">
             Empty component <?= get_class($this) ?>
         </div>
 
-        <?php
+<?php
     }
 
 

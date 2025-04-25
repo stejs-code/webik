@@ -12,4 +12,3 @@ class HandicappedTracy
         die();
     }
 }
-

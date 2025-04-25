@@ -15,7 +15,7 @@ class TasksGrid extends Component
 
     public function render()
     {
-        ?>
+?>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[1fr]">
             <?php foreach ($this->tasks as $task) { ?>
@@ -29,9 +29,6 @@ class TasksGrid extends Component
             <?php } ?>
         </div>
 
-        <?php
+<?php
     }
-
-
-
 }

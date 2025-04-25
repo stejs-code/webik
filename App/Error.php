@@ -7,9 +7,7 @@ class Error extends Bone
     public TemplateContext $tpl_context;
     public Template $tpl;
 
-    public function __construct(public string $message, public int $code = 500)
-    {
-    }
+    public function __construct(public string $message, public int $code = 500) {}
 
     public function render()
     {

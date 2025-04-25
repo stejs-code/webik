@@ -31,11 +31,4 @@ class Template
 
         return ob_get_clean();
     }
-
-    public function layout(string $tpl_path): Template
-    {
-        $this->layout_path = $tpl_path;
-        return $this;
-    }
-
 }

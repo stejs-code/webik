@@ -19,5 +19,4 @@ class Bone
     {
         self::$globalDC = $dc;
     }
-
 }

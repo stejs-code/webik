@@ -19,7 +19,7 @@ class Navigation extends Component
 
     public function render()
     {
-        ?>
+?>
 
         <div class="bg-white border-b border-border tm-mavigation">
             <nav class="flex justify-between items-center mx-auto max-w-screen-lg px-4 py-2">
@@ -35,12 +35,12 @@ class Navigation extends Component
             </nav>
         </div>
 
-        <?php
+    <?php
     }
 
     public function renderItem(array $item)
     {
-        ?>
+    ?>
 
         <li>
             <a spa="prefetch" href="<?= $item['url'] ?>" <?= $item['active'] ? 'data-active' : '' ?>
@@ -49,6 +49,6 @@ class Navigation extends Component
             </a>
         </li>
 
-        <?php
+<?php
     }
 }

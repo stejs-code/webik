@@ -40,13 +40,9 @@ class BaseController extends Bone
         $html = $this->render();
 
         $this->response->status(200)->html($html)->send();
-
     }
 
-    protected function compute()
-    {
-
-    }
+    protected function compute() {}
 
     protected function render(): string
     {
@@ -61,6 +57,5 @@ class BaseController extends Bone
         }
 
         return $rendered;
-
     }
 }

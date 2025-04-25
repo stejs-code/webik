@@ -19,5 +19,4 @@ class Boot
     {
         $this->router->dispatch();
     }
-
 }

@@ -34,8 +34,8 @@ class Canteen extends BaseController
     public array $order = [];
     public int $total = 0;
 
-    public function compute(
-    ) {
+    public function compute()
+    {
         $this->tpl_context->setTitle("Jídelna", false);
         $this->tpl = new Template("canteen", $this->tpl_context);
 
@@ -52,9 +52,5 @@ class Canteen extends BaseController
         $this->tpl->assign("menu", $this->menu);
         $this->tpl->assign("order", $this->order);
         $this->tpl->assign("total", $this->total);
-
-
     }
-
-
 }

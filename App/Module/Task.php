@@ -70,7 +70,6 @@ class Task extends BaseController
                 $this->task = reset($this->task);
 
                 $this->tpl = (new Template("task/" . ($this->task["id"]), $this->tpl_context));
-
             }
         } else {
             $this->tpl = (new Template("task", $this->tpl_context));
