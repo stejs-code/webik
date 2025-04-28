@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Module\HomePage;
+use App\Module\StarryNight;
 use App\Module\Task;
 use App\Module\Canteen;
 use App\Response\Response;
@@ -99,6 +100,7 @@ class Router extends Bone
         $this->get('/task', Task::class);
         $this->get('/task/:urlPath', Task::class);
         $this->get('/canteen', Canteen::class);
+        $this->get('/starry-night', StarryNight::class);
     }
 
     public function dispatch(): void
