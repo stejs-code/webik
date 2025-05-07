@@ -9,6 +9,8 @@ class Boot
 
     public function __construct()
     {
+        error_reporting(E_ERROR | E_PARSE);
+        
         Bone::setGlobalDC(new DependencyContainer());
         $this->router = new Router();
         $this->router->registerRoutes();
